@@ -19,4 +19,8 @@ A Spring Boot application for managing student records with comprehensive testin
 - **Build Tool:** Maven
 - **Java Version:** 17
 
+<<<<<<< HEAD
 ## 📦 Project Structure
+=======
+## 📦 Project Structure
+>>>>>>> c401b71 (feat: initial DevSecOps project setup)

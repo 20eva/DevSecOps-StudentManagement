@@ -1,0 +1,35 @@
+title = "GitLeaks Configuration for Spring Boot"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Allowlist for known false positives"
+
+# Paths to ignore
+paths = [
+    '''\.git/''',
+    '''\.gradle/''',
+    '''\.mvn/''',
+    '''target/''',
+    '''build/''',
+    '''node_modules/''',
+    '''\.idea/''',
+    '''\.vscode/''',
+]
+
+# Patterns that are safe to ignore
+regexes = [
+    '''example\.com''',
+    '''localhost''',
+    '''127\.0\.0\.1''',
+    '''test-secret''',
+    '''dummy-key''',
+]
+
+# Specific strings to ignore (add your test keys here)
+stopwords = [
+    'test',
+    'example',
+    'sample',
+]
