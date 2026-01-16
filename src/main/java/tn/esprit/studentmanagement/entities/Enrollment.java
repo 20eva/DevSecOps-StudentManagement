@@ -16,7 +16,7 @@ public class Enrollment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEnrollment;
     private LocalDate enrollmentDate;
-    private Double grade;
+    private String grade;
     @Enumerated(EnumType.STRING)
     private Status status;
 
@@ -25,6 +25,16 @@ public class Enrollment {
 
     @ManyToOne
     private Course course;
+
+  
+  public Long getId() {
+        return idEnrollment;
+    }
+    
+    public void setId(Long id) {
+        this.idEnrollment = id;
+    }
+   
 
 
 

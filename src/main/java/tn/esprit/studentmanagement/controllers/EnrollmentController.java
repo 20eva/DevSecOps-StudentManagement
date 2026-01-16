@@ -1,6 +1,8 @@
 package tn.esprit.studentmanagement.controllers;
 
 import lombok.AllArgsConstructor;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.studentmanagement.entities.Enrollment;
 import tn.esprit.studentmanagement.services.IEnrollment;
@@ -17,7 +19,13 @@ public class EnrollmentController {
     public List<Enrollment> getAllEnrollment() { return enrollmentService.getAllEnrollments(); }
 
     @GetMapping("/getEnrollment/{id}")
-    public Enrollment getEnrollment(@PathVariable Long id) { return enrollmentService.getEnrollmentById(id); }
+    public ResponseEntity<Enrollment> getEnrollment(@PathVariable Long id) { 
+        Enrollment enrollment = enrollmentService.getEnrollmentById(id);
+        if (enrollment == null) {
+        return ResponseEntity.notFound().build();  // Returns 404
+    }
+    return ResponseEntity.ok(enrollment);
+     }
 
     @PostMapping("/createEnrollment")
     public Enrollment createEnrollment(@RequestBody Enrollment enrollment) { return enrollmentService.saveEnrollment(enrollment); }
@@ -29,5 +37,6 @@ public class EnrollmentController {
 
     @DeleteMapping("/deleteEnrollment/{id}")
     public void deleteEnrollment(@PathVariable Long id) {
-        enrollmentService.deleteEnrollment(id); }
+        enrollmentService.deleteEnrollment(id);
+    }
 }
